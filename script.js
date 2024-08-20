@@ -3,7 +3,14 @@ document.getElementById('student-form').addEventListener('submit', function(even
 
     var id = document.getElementById('id').value; 
     var name = document.getElementById('name').value;
-    var age = document.getElementById('age').value;
+    var age = parseInt(document.getElementById('age').value, 10);
+
+    if (isNaN(age) || age <= 18) {
+        var messageElement = document.getElementById('message');
+        messageElement.textContent = 'Age must be greater than 18.';
+        messageElement.className = 'message error';
+        return; 
+    }
 
     // Print form data to the console
     console.log("ID:", id);
